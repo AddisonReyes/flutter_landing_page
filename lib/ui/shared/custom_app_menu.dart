@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_landing_page/ui/shared/custom_menu_item.dart';
+import 'package:flutter_landing_page/providers/page_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
 class CustomAppMenu extends StatefulWidget {
   const CustomAppMenu({super.key});
@@ -25,6 +26,8 @@ class _CustomAppMenuState extends State<CustomAppMenu>
 
   @override
   Widget build(BuildContext context) {
+    final pageProvider = Provider.of<PageProvider>(context, listen: false);
+
     return SafeArea(
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
@@ -59,27 +62,37 @@ class _CustomAppMenuState extends State<CustomAppMenu>
                 if (isOpen) ...[
                   CustomMenuItem(
                     text: 'Home',
-                    onPressed: () {},
+                    onPressed: () {
+                      pageProvider.goTo(0);
+                    },
                     delay: 0,
                   ),
                   CustomMenuItem(
                     text: 'About',
-                    onPressed: () {},
+                    onPressed: () {
+                      pageProvider.goTo(1);
+                    },
                     delay: 30,
                   ),
                   CustomMenuItem(
                     text: 'Pricing',
-                    onPressed: () {},
+                    onPressed: () {
+                      pageProvider.goTo(2);
+                    },
                     delay: 60,
                   ),
                   CustomMenuItem(
                     text: 'Contact',
-                    onPressed: () {},
+                    onPressed: () {
+                      pageProvider.goTo(3);
+                    },
                     delay: 90,
                   ),
                   CustomMenuItem(
                     text: 'Location',
-                    onPressed: () {},
+                    onPressed: () {
+                      pageProvider.goTo(4);
+                    },
                     delay: 120,
                   ),
                 ]
